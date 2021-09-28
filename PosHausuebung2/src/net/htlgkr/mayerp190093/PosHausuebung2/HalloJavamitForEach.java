@@ -22,6 +22,7 @@ public class HalloJavamitForEach {
         List<String> liste = new ArrayList<String>(Arrays.asList());
         liste.add("Enes");
         liste.add("Fabi");
+        liste.add("Krits");
         for (String string : liste) {
             System.out.println(string);
         }
