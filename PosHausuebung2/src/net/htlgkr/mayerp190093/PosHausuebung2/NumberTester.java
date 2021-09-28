@@ -5,6 +5,9 @@
  */
 package net.htlgkr.mayerp190093.PosHausuebung2;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author mayer
@@ -63,7 +66,7 @@ public class NumberTester {
     }
 
     public void testFile() {
-
+        BufferedReader br = new BufferedReader();
     }
 
 }
