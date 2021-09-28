@@ -16,6 +16,36 @@ public class NumberTester {
     Numbertest primeTester;
     Numbertest palindromeTester;
 
+    public static void main(String[] args) {
+        NumberTester nu = new NumberTester("number.txt");
+        Numbertest oddTest = (n) -> (n % 2) == 0;
+        nu.setOddEvenTester(oddTest);
+
+        Numbertest primeTest = (n) -> {
+            boolean b = true;
+            for (int i = 2; i < n; i++) {
+                if (i % n == 0) {
+                    b = false;
+                }
+            }
+            return b;
+        };
+        nu.setPrimeTester(primeTest);
+        Numbertest palindromeTest = (n) -> {
+            boolean b = false;
+            String numbers = String.valueOf(n);
+            String empty = "";
+            for (int i = numbers.length(); i >= 0; i--) {
+                empty += numbers.charAt(i);
+            }
+            if (empty.equals(numbers)) {
+                b = true;
+            }
+            return b;
+        };
+        nu.setPalindromeTester(palindromeTest);
+    }
+
     public NumberTester(String filename) {
         this.filename = filename;
     }
@@ -33,30 +63,7 @@ public class NumberTester {
     }
 
     public void testFile() {
-        oddTester = (n) -> (n % 2) == 0;
 
-        primeTester = (n) -> {
-            boolean b = true;
-            for (int i = 2; i < n; i++) {
-                if (i % n == 0) {
-                    b = false;
-                }
-            }
-            return b;
-        };
-
-        palindromeTester = (n) -> {
-            boolean b = false;
-            String numbers = String.valueOf(n);
-            String empty = "";
-            for (int i = numbers.length(); i >= 0; i--) {
-                empty += numbers.charAt(i);
-            }
-            if (empty.equals(numbers)) {
-                b = true;
-            }
-            return b;
-        };
     }
 
 }
