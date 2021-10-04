@@ -25,6 +25,10 @@ public class NumberTester {
     Numbertest primeTester;
     Numbertest palindromeTester;
 
+    public NumberTester(String filename) {
+        this.filename = filename;
+    }
+
     public static void main(String[] args) {
         NumberTester nu = new NumberTester("number.txt");
         Numbertest oddTest = (n) -> (n % 2) == 0;
@@ -53,10 +57,8 @@ public class NumberTester {
             return b;
         };
         nu.setPalindromeTester(palindromeTest);
-    }
 
-    public NumberTester(String filename) {
-        this.filename = filename;
+        nu.testFile();
     }
 
     public void setOddEvenTester(Numbertest oddTester) {
@@ -75,17 +77,35 @@ public class NumberTester {
 
         final File file = new File(filename);
         try (final BufferedReader br = new BufferedReader(new FileReader(file))) {
-            br.readLine();
+            int testfälle = Integer.parseInt(br.readLine());
+            int zähler = -1;
             String line = br.readLine();
             while (line != null) {
+                zähler++;
+                if (testfälle == zähler) {
+                    break;
+                }
                 final String[] input = line.split(" ");
                 if (Integer.parseInt(input[0]) == 1) {
                     if (oddTester.testNumber(Integer.parseInt(input[1])) == true) {
                         System.out.println("EVEN");
                     } else {
-                        System.out.println("NOT EVEN");
+                        System.out.println("ODD");
+                    }
+                } else if (Integer.parseInt(input[0]) == 2) {
+                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
+                        System.out.println("PRIME");
+                    } else {
+                        System.out.println("NOT PRIME");
+                    }
+                } else if (Integer.parseInt(input[0]) == 3) {
+                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
+                        System.out.println("PALINDROME");
+                    } else {
+                        System.out.println("NOT PALINDROM");
                     }
                 }
+                br.readLine();
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NumberTester.class.getName()).log(Level.SEVERE, null, ex);
