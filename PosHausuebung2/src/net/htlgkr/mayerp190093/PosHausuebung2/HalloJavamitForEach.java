@@ -32,6 +32,9 @@ public class HalloJavamitForEach {
 
         Consumer<String> consumer = (String s) -> System.out.println(s);
 
+        NumberTester nu = new NumberTester("number.txt");
+        nu.testFile();
+
     }
 
 }

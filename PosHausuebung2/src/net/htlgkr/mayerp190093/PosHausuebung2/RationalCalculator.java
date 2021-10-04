@@ -40,7 +40,7 @@ public class RationalCalculator extends AbstractCalculator {
     @Override
     public Number multiply(Number a, Number b) {
         Number c = new Number();
-        subtract = (x, y) -> {
+        multiply = (x, y) -> {
             double neuZaehler = a.getA() * b.getA();
             double neuNenner = a.getB() * b.getB();
             c.setA(neuZaehler);
@@ -53,7 +53,7 @@ public class RationalCalculator extends AbstractCalculator {
     @Override
     public Number divide(Number a, Number b) {
         Number c = new Number();
-        subtract = (x, y) -> {
+        divide = (x, y) -> {
             double neuZaehler = a.getA() * b.getB();
             double neuNenner = a.getB() * b.getA();
             c.setA(neuZaehler);

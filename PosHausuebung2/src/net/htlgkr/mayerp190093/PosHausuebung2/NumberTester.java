@@ -29,41 +29,6 @@ public class NumberTester {
         this.filename = filename;
     }
 
-    public static void main(String[] args) {
-        NumberTester nu = new NumberTester("number.txt");
-        Numbertest oddTest = (n) -> (n % 2) == 0;
-        nu.setOddEvenTester(oddTest);
-
-        Numbertest primeTest = (n) -> {
-            boolean b = false;
-            for (int i = 2; i < n; i++) {
-                if (i != 1 && i != n && n % i == 0) {
-                    b = false;
-                } else {
-                    b = true;
-                }
-
-            }
-            return b;
-        };
-        nu.setPrimeTester(primeTest);
-        Numbertest palindromeTest = (n) -> {
-            boolean b = false;
-            String numbers = String.valueOf(n);
-            String empty = "";
-            for (int i = numbers.length(); i >= 0; i--) {
-                empty = empty + numbers.charAt(i);
-            }
-            if (empty.equals(numbers)) {
-                b = true;
-            }
-            return b;
-        };
-        nu.setPalindromeTester(palindromeTest);
-
-        nu.testFile();
-    }
-
     public void setOddEvenTester(Numbertest oddTester) {
         this.oddTester = oddTester;
     }
@@ -77,6 +42,36 @@ public class NumberTester {
     }
 
     public void testFile() {
+        Numbertest oddTest = (n) -> (n % 2) == 0;
+        setOddEvenTester(oddTest);
+
+        Numbertest primeTest = (n) -> {
+            boolean b = false;
+            for (int i = 2; i < n; i++) {
+                if (i != 1 && i != n && n % i == 0) {
+                    b = false;
+                } else {
+                    b = true;
+                }
+
+            }
+            return b;
+        };
+        setPrimeTester(primeTest);
+
+        Numbertest palindromeTest = (n) -> {
+            boolean b = false;
+            String numbers = String.valueOf(n);
+            String empty = "";
+            for (int i = numbers.length(); i >= 0; i--) {
+                empty = empty + numbers.charAt(i);
+            }
+            if (empty.equals(numbers)) {
+                b = true;
+            }
+            return b;
+        };
+        setPalindromeTester(palindromeTest);
 
         final File file = new File(filename);
         try (final BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -111,7 +106,6 @@ public class NumberTester {
 //                        System.out.println("NOT PALINDROM");
 //
 //                    }
-//
                 }
 
                 line = br.readLine();
