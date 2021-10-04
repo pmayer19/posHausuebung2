@@ -72,10 +72,21 @@ public class NumberTester {
     }
 
     public void testFile() {
+
         final File file = new File(filename);
         try (final BufferedReader br = new BufferedReader(new FileReader(file))) {
             br.readLine();
             String line = br.readLine();
+            while (line != null) {
+                final String[] input = line.split(" ");
+                if (Integer.parseInt(input[0]) == 1) {
+                    if (oddTester.testNumber(Integer.parseInt(input[1])) == true) {
+                        System.out.println("EVEN");
+                    } else {
+                        System.out.println("NOT EVEN");
+                    }
+                }
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NumberTester.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
