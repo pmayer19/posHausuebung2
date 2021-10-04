@@ -35,11 +35,14 @@ public class NumberTester {
         nu.setOddEvenTester(oddTest);
 
         Numbertest primeTest = (n) -> {
-            boolean b = true;
+            boolean b = false;
             for (int i = 2; i < n; i++) {
-                if (i % n == 0) {
+                if (i != 1 && i != n && n % i == 0) {
                     b = false;
+                } else {
+                    b = true;
                 }
+
             }
             return b;
         };
@@ -49,7 +52,7 @@ public class NumberTester {
             String numbers = String.valueOf(n);
             String empty = "";
             for (int i = numbers.length(); i >= 0; i--) {
-                empty += numbers.charAt(i);
+                empty = empty + numbers.charAt(i);
             }
             if (empty.equals(numbers)) {
                 b = true;
@@ -77,35 +80,41 @@ public class NumberTester {
 
         final File file = new File(filename);
         try (final BufferedReader br = new BufferedReader(new FileReader(file))) {
-            int testfälle = Integer.parseInt(br.readLine());
-            int zähler = -1;
+            br.readLine();
             String line = br.readLine();
             while (line != null) {
-                zähler++;
-                if (testfälle == zähler) {
-                    break;
-                }
-                final String[] input = line.split(" ");
+
+                String[] input = line.split("\\s+");
                 if (Integer.parseInt(input[0]) == 1) {
                     if (oddTester.testNumber(Integer.parseInt(input[1])) == true) {
                         System.out.println("EVEN");
+
                     } else {
                         System.out.println("ODD");
+
                     }
-                } else if (Integer.parseInt(input[0]) == 2) {
-                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
-                        System.out.println("PRIME");
-                    } else {
-                        System.out.println("NOT PRIME");
-                    }
-                } else if (Integer.parseInt(input[0]) == 3) {
-                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
-                        System.out.println("PALINDROME");
-                    } else {
-                        System.out.println("NOT PALINDROM");
-                    }
+
+//                } else if (Integer.parseInt(input[0]) == 2) {
+//                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
+//                        System.out.println("PRIME");
+//
+//                    } else {
+//                        System.out.println("NOT PRIME");
+//
+//                    }
+//
+//                } else if (Integer.parseInt(input[0]) == 3) {
+//                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
+//                        System.out.println("PALINDROME");
+//
+//                    } else {
+//                        System.out.println("NOT PALINDROM");
+//
+//                    }
+//
                 }
-                br.readLine();
+
+                line = br.readLine();
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NumberTester.class.getName()).log(Level.SEVERE, null, ex);
