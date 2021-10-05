@@ -17,54 +17,22 @@ public class RationalCalculator extends AbstractCalculator {
 
     @Override
     public Number add(Number a, Number b) {
-        Number c = new Number();
-        add = (x, y) -> {
-            double neuZaehler = a.getA() * b.getB() + b.getA() * a.getB();
-            double neuNenner = a.getB() * b.getB();
-            c.setA(neuZaehler);
-            c.setB(neuNenner);
-            return c;
-        };
-        return c;
+        return add.calc(a, b);
     }
 
     @Override
     public Number subtract(Number a, Number b) {
-        Number c = new Number();
-        subtract = (x, y) -> {
-            double neuZaehler = a.getA() * b.getB() - b.getA() * a.getB();
-            double neuNenner = a.getB() * b.getB();
-            c.setA(neuZaehler);
-            c.setB(neuNenner);
-            return c;
-        };
-        return c;
+        return subtract.calc(a, b);
     }
 
     @Override
     public Number multiply(Number a, Number b) {
-        Number c = new Number();
-        multiply = (x, y) -> {
-            double neuZaehler = a.getA() * b.getA();
-            double neuNenner = a.getB() * b.getB();
-            c.setA(neuZaehler);
-            c.setB(neuNenner);
-            return c;
-        };
-        return c;
+        return multiply.calc(a, b);
     }
 
     @Override
     public Number divide(Number a, Number b) {
-        Number c = new Number();
-        divide = (x, y) -> {
-            double neuZaehler = a.getA() * b.getB();
-            double neuNenner = a.getB() * b.getA();
-            c.setA(neuZaehler);
-            c.setB(neuNenner);
-            return c;
-        };
-        return c;
+        return divide.calc(a, b);
     }
 
 }

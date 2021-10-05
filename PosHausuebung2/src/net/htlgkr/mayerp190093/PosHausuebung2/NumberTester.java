@@ -89,23 +89,23 @@ public class NumberTester {
 
                     }
 
-                } else if (Integer.parseInt(input[0]) == 2) {
-                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
-                        System.out.println("PRIME");
-
-                    } else {
-                        System.out.println("NOT PRIME");
-
-                    }
-
-                } else if (Integer.parseInt(input[0]) == 3) {
-                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
-                        System.out.println("PALINDROME");
-
-                    } else {
-                        System.out.println("NOT PALINDROM");
-
-                    }
+//                } else if (Integer.parseInt(input[0]) == 2) {
+//                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
+//                        System.out.println("PRIME");
+//
+//                    } else {
+//                        System.out.println("NOT PRIME");
+//
+//                    }
+//
+//                } else if (Integer.parseInt(input[0]) == 3) {
+//                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
+//                        System.out.println("PALINDROME");
+//
+//                    } else {
+//                        System.out.println("NOT PALINDROM");
+//
+//                    }
                 }
 
                 line = br.readLine();

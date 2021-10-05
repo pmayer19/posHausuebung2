@@ -30,4 +30,8 @@ public class Number {
         this.b = b;
     }
 
+    public interface CalculationOperation {
+
+        Number calc(Number x, Number y);
+    }
 }

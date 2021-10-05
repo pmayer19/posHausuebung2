@@ -9,7 +9,7 @@ package net.htlgkr.mayerp190093.PosHausuebung2;
  *
  * @author mayer
  */
-public abstract class AbstractCalculator {
+public abstract class AbstractCalculator extends Number {
 
     protected CalculationOperation add;
     protected CalculationOperation subtract;
