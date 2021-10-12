@@ -30,6 +30,8 @@ public class HalloJavamitForEach {
 
         liste.forEach((String s) -> System.out.println(s));
 
+        liste.forEach(System.out::print);
+
         Consumer<String> consumer = (String s) -> System.out.println(s);
 
         NumberTester nu = new NumberTester("number.txt");
@@ -148,7 +150,7 @@ public class HalloJavamitForEach {
             return c;
         };
 
-        ComplexCalculator c = new ComplexCalculator(addVector, subtractVector, multiplyVector, divideVector);
+        ComplexCalculator c = new ComplexCalculator(addComplex, subtractComplex, multiplyComplex, divideComplex);
 
         int eing = 0;
         double eing1 = 0;
@@ -162,134 +164,60 @@ public class HalloJavamitForEach {
             System.out.println("3...Complex calculator");
             System.out.println("4...Exit program");
             eing = Integer.parseInt(sc.nextLine());
-            Number n = new Number();
-            Number num = new Number();
+            AbstractCalculator a = null;
+            switch (eing) {
+                case 1:
+                    a = r;
+                    break;
+                case 2:
+                    a = v;
+                    break;
+                case 3:
+                    a = c;
+                    break;
+            }
             Number n1 = new Number();
             Number n2 = new Number();
             Number erg = new Number();
-            switch (eing) {
+
+            System.out.println("Enter number x a:");
+            eing1 = Double.parseDouble(sc.nextLine());
+            System.out.println("Enter number x b:");
+            eing2 = Double.parseDouble(sc.nextLine());
+            System.out.println("Enter number y a:");
+            eing3 = Double.parseDouble(sc.nextLine());
+            System.out.println("Enter number y b:");
+            eing4 = Double.parseDouble(sc.nextLine());
+            n1.setA(eing1);
+            n1.setB(eing2);
+            n2.setA(eing3);
+            n2.setB(eing4);
+
+            console();
+            eing5 = Integer.parseInt(sc.nextLine());
+            switch (eing5) {
                 case 1:
-                    System.out.println("Enter number x a:");
-                    eing1 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number x b:");
-                    eing2 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y a:");
-                    eing3 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y b:");
-                    eing4 = Double.parseDouble(sc.nextLine());
-                    n1.setA(eing1);
-                    n1.setB(eing2);
-                    n2.setA(eing3);
-                    n2.setB(eing4);
-
-                    console();
-                    eing5 = Integer.parseInt(sc.nextLine());
-                    switch (eing5) {
-                        case 1:
-                            erg = r.add(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 2:
-                            erg = r.subtract(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 3:
-                            erg = r.multiply(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 4:
-                            erg = r.divide(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-
-                    }
+                    erg = a.add(n1, n2);
+                    System.out.println(erg.getA());
+                    System.out.println(erg.getB());
                     break;
                 case 2:
-                    System.out.println("Enter number x a:");
-                    eing1 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number x b:");
-                    eing2 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y a:");
-                    eing3 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y b:");
-                    eing4 = Double.parseDouble(sc.nextLine());
-                    n1.setA(eing1);
-                    n1.setB(eing2);
-                    n2.setA(eing3);
-                    n2.setB(eing4);
-
-                    console();
-                    eing5 = Integer.parseInt(sc.nextLine());
-                    switch (eing5) {
-                        case 1:
-                            erg = v.add(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 2:
-                            erg = v.subtract(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 3:
-                            erg = v.multiply(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 4:
-                            erg = v.divide(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-
-                    }
+                    erg = a.subtract(n1, n2);
+                    System.out.println(erg.getA());
+                    System.out.println(erg.getB());
                     break;
                 case 3:
-                    System.out.println("Enter number x a:");
-                    eing1 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number x b:");
-                    eing2 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y a:");
-                    eing3 = Double.parseDouble(sc.nextLine());
-                    System.out.println("Enter number y b:");
-                    eing4 = Double.parseDouble(sc.nextLine());
-                    n1.setA(eing1);
-                    n1.setB(eing2);
-                    n2.setA(eing3);
-                    n2.setB(eing4);
-
-                    console();
-                    eing5 = Integer.parseInt(sc.nextLine());
-                    switch (eing5) {
-                        case 1:
-                            erg = c.add(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 2:
-                            erg = c.subtract(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 3:
-                            erg = c.multiply(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-                        case 4:
-                            erg = c.divide(n1, n2);
-                            System.out.println(erg.getA());
-                            System.out.println(erg.getB());
-                            break;
-
-                    }
+                    erg = a.multiply(n1, n2);
+                    System.out.println(erg.getA());
+                    System.out.println(erg.getB());
                     break;
-            }
+                case 4:
+                    erg = a.divide(n1, n2);
+                    System.out.println(erg.getA());
+                    System.out.println(erg.getB());
+                    break;
 
+            }
         } while (eing != 4);
     }
 

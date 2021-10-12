@@ -34,7 +34,7 @@ public class NumberTester {
     }
 
     public void setPrimeTester(Numbertest primeTester) {
-        this.primeTester = this.primeTester;
+        this.primeTester = primeTester;
     }
 
     public void setPalindromeTester(Numbertest palindromeTester) {
@@ -48,7 +48,7 @@ public class NumberTester {
         Numbertest primeTest = (n) -> {
             boolean b = false;
             for (int i = 2; i < n; i++) {
-                if (i != 1 && i != n && n % i == 0) {
+                if (i != n && n % i == 0) {
                     b = false;
                 } else {
                     b = true;
@@ -62,11 +62,10 @@ public class NumberTester {
         Numbertest palindromeTest = (n) -> {
             boolean b = false;
             String numbers = String.valueOf(n);
-            String empty = "";
-            for (int i = numbers.length(); i >= 0; i--) {
-                empty = empty + numbers.charAt(i);
-            }
-            if (empty.equals(numbers)) {
+            StringBuilder builder = new StringBuilder(numbers);
+            builder.reverse();
+            String rev = builder.toString();
+            if (numbers.equals(rev)) {
                 b = true;
             }
             return b;
@@ -89,23 +88,23 @@ public class NumberTester {
 
                     }
 
-//                } else if (Integer.parseInt(input[0]) == 2) {
-//                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
-//                        System.out.println("PRIME");
-//
-//                    } else {
-//                        System.out.println("NOT PRIME");
-//
-//                    }
-//
-//                } else if (Integer.parseInt(input[0]) == 3) {
-//                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
-//                        System.out.println("PALINDROME");
-//
-//                    } else {
-//                        System.out.println("NOT PALINDROM");
-//
-//                    }
+                } else if (Integer.parseInt(input[0]) == 2) {
+                    if (primeTester.testNumber(Integer.parseInt(input[1])) == true) {
+                        System.out.println("PRIME");
+
+                    } else {
+                        System.out.println("NOT PRIME");
+
+                    }
+
+                } else if (Integer.parseInt(input[0]) == 3) {
+                    if (palindromeTester.testNumber(Integer.parseInt(input[1])) == true) {
+                        System.out.println("PALINDROME");
+
+                    } else {
+                        System.out.println("NOT PALINDROM");
+
+                    }
                 }
 
                 line = br.readLine();
